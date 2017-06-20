@@ -9,9 +9,8 @@ def quit():
     print "RPN has quit"
 
 def calc():
-    num1 = 0
-    num2 = 0
-    op = ""
+    num1 = None
+    num2 = None
     while True:
         try:
             invar = raw_input("> ")            
@@ -21,13 +20,30 @@ def calc():
                 quit()
                 break
             elif invar in OPERATORS:
-                
-
-            print "you entered " + input_var
+                if isinstance(num1, float) and isinstance(num2, float):
+                    num1 = eval(str(num1) + " " + invar + " " + str(num2))
+                    num2 = None
+                    print num1
+                else:
+                    print "both numbers are not set, operator has not been applied"
+            else:
+                try:
+                    if num1 == None:
+                        num1 = float(invar)
+                        print num1
+                    elif num2 == None:
+                        num2 = float(invar)
+                        print num2
+                    else:
+                        print "an unknown error occurred"
+                except:
+                    print "input entered is not a valid integer or float value"
         except EOFError:
             quit()
             break
         except:
+            num1 = None
+            num2 = None
             print "your input was invalid, the calculator has been cleared"
 
 def main():
