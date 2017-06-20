@@ -19,8 +19,22 @@ def intro():
     print "Welcome to Jeremy's reverse polish calculator"
     print "Type h for help"
 
-def quit():
+def q():
     print "RPN has quit"
+
+def single(var, num1, num2):
+    arr = var.split(" ")
+    summ = None
+    try:
+        if len(arr) == 2:
+            summ =  eval(str(num1) + " " + arr[1] + " " + arr[0])
+        elif len(arr) == 3:
+            summ =  eval(arr[0] + " " + arr[2] + " " + arr[1])
+        if isinstance(summ, float) or isinstance(summ, int):
+            return float(summ)
+    except:
+        print "There was an issue pasing"
+        return None
 
 def calc():
     num1 = None
@@ -31,8 +45,11 @@ def calc():
             if invar == "h":
                 h()
             elif invar == "q":
-                quit()
+                q()
                 break
+            elif " " in invar:
+                num1 = single(var, num1, num2)
+                num2 = None
             elif invar in OPERATORS:
                 if isinstance(num1, float) and isinstance(num2, float):
                     num1 = eval(str(num1) + " " + invar + " " + str(num2))
@@ -53,7 +70,7 @@ def calc():
                 except:
                     print "input entered is not a valid integer or float value"
         except EOFError:
-            quit()
+            q()
             break
         except:
             num1 = None
