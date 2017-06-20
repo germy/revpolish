@@ -1,5 +1,6 @@
 # Jeremy's reverse polish notation calculator
 ### Authored 6/20/2017
+#### leejeremy604@gmail.com
 
 * Description: The idea behind this calculator is that most operations are centered around the stack. Number inputs would add elements to the stack, operator inputs would pop items off of the stack, apply the operator and add the item back to the stack. This allows us to always maintain the position, as multiple numbers can be on the stack and then operators be applied to those numbers and re-added to the stack.
 
