@@ -1,5 +1,3 @@
-import atexit
-
 class RPN(object):
   
   def __init__(self):
@@ -50,47 +48,46 @@ class RPN(object):
       print "There was an issue pasing the input, the calculator will reset"
       return None
 
-  def calc(self):
-    while True:
-      try:
-        invar = raw_input("> ")
-        if invar == "h":
-          self.h()
-        elif invar == "q":
-          raise EOFError
-        elif " " in invar:
-          self.num1 = self.single(invar)
-          self.num2 = None
-        elif invar in self.OPERATORS:
-          if isinstance(self.num1, float) and isinstance(self.num2, float):
-            self.num1 = eval(str(self.num1) + " " + invar + " " + str(self.num2))
-            self.num2 = None
-            print self.num1
-          else:
-            print "both numbers are not set, operator has not been applied"
-        else:
-          if self.num1 == None:
-            self.num1 = float(invar)
-            print self.num1
-          elif self.num2 == None:
-            self.num2 = float(invar)
-            print self.num2
-          else:
-            print "an unknown error occurred"
-            print "you may have entereed too many numbers in sequence"
-            print "the calculator will reset"
-            raise
-      except EOFError:
-        self.q()
-        break
-      except:
-        self.num1 = None
+  def calc(self, invar):
+    try:
+      if invar == "h":
+        self.h()
+      elif invar == "q":
+        return False
+      elif " " in invar:
+        self.num1 = self.single(invar)
         self.num2 = None
-        print "your input was invalid, the calculator has been cleared"
+      elif invar in self.OPERATORS:
+        if isinstance(self.num1, float) and isinstance(self.num2, float):
+          self.num1 = eval(str(self.num1) + " " + invar + " " + str(self.num2))
+          self.num2 = None
+          print self.num1
+        else:
+          print "both numbers are not set, operator has not been applied"
+      else:
+        if self.num1 == None:
+          self.num1 = float(invar)
+          print self.num1
+        elif self.num2 == None:
+          self.num2 = float(invar)
+          print self.num2
+        else:
+          print "an unknown error occurred"
+          print "you may have entereed too many numbers in sequence"
+          print "the calculator will reset"
+          raise
+    except:
+      self.num1 = None
+      self.num2 = None
+      print "your input was invalid, the calculator has been cleared"
 
   def main(self):
     self.intro()
-    self.calc()
+    while True:
+      invar = raw_input("> ")
+      if not self.calc(invar):
+        break
+  
 
 if __name__ == "__main__":
   calc = RPN()
