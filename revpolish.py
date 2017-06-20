@@ -1,9 +1,23 @@
 OPERATORS = ['+', '-', '/', '*']
 
+def h():
+    print "This is a reverse polish noation calculator"
+    print "valid inputs are float numbers and operators"
+    print "to quit type 'q' or Ctrl-D"
+    print "the input takes numbers then operators, eg:"
+    print "> 5"
+    print "5.0"
+    print "> 8"
+    print "8.0"
+    print " > +"
+    print "13.0"
+    print "-------"
+    print "> 5 6 *"
+    print "30.0"
 
 def intro():
     print "Welcome to Jeremy's reverse polish calculator"
-    print "Type help for help"
+    print "Type h for help"
 
 def quit():
     print "RPN has quit"
@@ -14,8 +28,8 @@ def calc():
     while True:
         try:
             invar = raw_input("> ")            
-            if invar == "help":
-                help()
+            if invar == "h":
+                h()
             elif invar == "q":
                 quit()
                 break
