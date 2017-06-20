@@ -9,9 +9,9 @@
 * Trade-offs: I decided to parse single lines with multiple numbers or operators into a different function rather than parse and execute the loop multiple times. This limits single line statements to two different patterns; however as per the examples, it didn't seem necessary to be able to incorporate more than this format. If the requirements change to actually require single line statements with more than two numbers and 1 operator, it is not difficult to change the program due to the appropriately structured program. This doesn't fit with the model of using the stack, however it can be easily changed to conform if additional requirements are necessary. 
 
 * How to Run: 
-** Calculator: python revpolish.py
-** Test Suite: python test.py
-** (uses python 2.7, Ctrl-D works on select operating systems)
+ * Calculator: python revpolish.py
+ * Test Suite: python test.py
+ * (uses python 2.7, Ctrl-D works on select operating systems)
 
 * Github Code: https://github.com/germy/revpolish
 * Challenge Instructions: https://gist.github.com/nilbus/fd0c0c82d6a062d1c1833e0c87622473
